@@ -1,0 +1,23 @@
+body {
+    font-family: "Tahoma", sans-serif;
+}
+
+h1 {
+    color: green; /*цвет текста*/
+    background-color: coral;
+}
+
+img{
+    width: 800px;
+}
+
+.text-green {
+    color: green;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+}
+
+p {
+    background-color: green;
+}
