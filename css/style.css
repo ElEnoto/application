@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+}
+
+.container {
+    min-height: 100vh;
+    background-color: #0B0D17;
+    font-family: "Manrope", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 165px;
+}
+
+.header{
+    max-width: 730px;
+    min-height: 128px;
+    margin-bottom: 33px;
+}
+
+h2 {
+
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 64px;
+    text-align: center;
+    margin: 8px 0;
+    color: #FFFFFF;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.Square {
+    width: 350px;
+    height: 346px;
+    padding: 40px 32px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    margin: 15px;
+}
+@media (max-width:1088px) {
+    .box {
+        justify-content: center;
+
+    }
+}
+
+
+/*@media (min-width:2580px) {*/
+/*    .box {min-width:2250px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width:2579px) and (min-width: 1440px) {*/
+/*    .box {max-width: 1110px;*/
+/*        min-height: 722px;*/
+/*    }*/
+/*    .B, .C, .E, .F {margin-left: 30px;}*/
+/*    .A, .B, .C {margin-bottom: 30px;}*/
+/*}*/
+
+/*@media (max-width:1439px) and (min-width: 1060px) {*/
+/*    .box {max-width: 730px;*/
+/*        min-height: 1098px;}*/
+/*    .B, .D, .F {margin-left: 30px;}*/
+/*    .A, .C {margin-bottom: 30px;}*/
+/*}*/
+/*@media (max-width:1059px) {*/
+/*    .box {max-width: 350px;*/
+/*        min-height: 2426px;}*/
+/*    .A, .B, .C, .D, .E {margin-bottom: 30px;}*/
+/*}*/
+
+
+.icon {
+    margin-bottom: 56px;
+}
+
+.headline {
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+h5 {
+    color: #18191F;
+    margin: 0;
+}
+
+.description {
+
+    margin: 12px 0 40px 0;
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+span {
+    color: #18191F;
+}
+a {
+    text-decoration: none;
+}
+
+.reference {
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #8C30F5;
+}
+
+.button {
+    text-align: center;
+    margin-top: 49px;
+}
+
+button {
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #0B0D17;
+    border: #FFFFFF 1px solid;
+    border-radius: 10px;
+    padding: 20px 20px;
+    font-family: "Manrope", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+}
+button:hover {
+    background-color: #8C30F5;
+}
+
+button:active {
+    background-color: #8C30F5;
+}
