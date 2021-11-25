@@ -1,28 +1,26 @@
 .header {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     min-height: 83px;
     background: rgb(255,255,255);
     background: linear-gradient(90deg, rgba(255,255,255,1) 19%, rgba(255,255,255,1) 70%, rgba(242,228,228,1) 100%);
 }
-/*
-.navbar-nav {
-    flex-direction: row;
+
+.row    {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-}
-*/
-
-.navbar {
-    height: 100%;
-}
-
-.col-2 {
-    display: flex;
     align-items: center;
 }
 
 .icon {
+    display: flex;
+    align-items: center;
+}
+
+.klean {
     margin-left: 10px;
     font-family: "Nunito", sans-serif;
     font-style: normal;
@@ -38,6 +36,7 @@
 .nav-link {
     text-decoration: none;
 }
+
 a {
     font-family: "Nunito", sans-serif;
     font-style: normal;
@@ -46,22 +45,24 @@ a {
     color: #485466;
 }
 
-.col {
+.buttons {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-button.sign-up {
+.sign {
     width: 100px;
     height: 36px;
-    border-radius: 20px;
-    padding: 7px 16px;
+    border-radius: 8px;
+    padding: 5px 16px;
     background: white;
-
+    border: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
 }
 
-span.sign-up {
+.sign-up {
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -72,8 +73,19 @@ span.sign-up {
 }
 
 .log {
-    width: 55px;
-    margin-right: 32px;
+    width: 100px;
+    height: 36px;
+    border-radius: 8px;
+    padding: 5px 16px;
+    background: transparent;
+    border: none;
+}
+
+.log:hover {
+    background: #f0e6e6;
+}
+
+.log-in {
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -117,23 +129,19 @@ p {
     background-repeat: no-repeat;
     background-size: auto 100%;
     background-position: 100% 0;
-
 }
 
 .demo {
     margin-bottom: 104px;
     width: 126px;
-    border-radius: 20px;
+    border-radius: 8px;
     font-family: "Nunito", sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     background: linear-gradient(to right, #C381DB 0%, #4E92F9 100%);
-
-}
-
-.bootstrap {
-    max-width: 460px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
 }
 
 .footer {
