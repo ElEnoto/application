@@ -1,16 +1,9 @@
-create table authors_books ( id_author_book serial primary key, 
-							id_author int constraint id_author_fk references authors (id_author), 
-							id_book int constraint id_book_fk references books (id_book));
+delete from books_bookshelves where bookshelves_number >=1
+select * from books_bookshelves
 
-create table bookshelves_bookcases ( id_bookshelves_bookcases serial primary key, 
-							bookshelves_number int constraint bookshelves_bookcases_unique unique, 
-							bookcase_number int );
-							
+explain select * from books where length(name_book)=15
+explain select * from authors where length(last_name)=15
 
-create table books_bookshelves ( id_books_bookshelves serial primary key, 
-							id_book int constraint id_book_unique unique, 
-bookshelves_number int constraint bookshelves_number_fk references bookshelves_bookcases (bookshelves_number));
+create index last_name_ind on authors (last_name)
 
-create table books ( id_book serial primary key constraint id_book_fk references books_bookshelves (id_book), 
-							name_book varchar, page_number int, year_of_publishing varchar );
-
+create index name_book_ind on books (name_book)
