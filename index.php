@@ -124,6 +124,8 @@
     </div>
 </div>
 <div class="footer">
+    <?php
+    echo date ('Y')?>
     <!--background-->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
