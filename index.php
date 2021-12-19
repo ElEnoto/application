@@ -124,8 +124,22 @@
     </div>
 </div>
 <div class="footer">
+
     <?php
-    echo date ('Y')?>
+    echo date ('D'). '<br>';
+    $a = 5;
+    $b = '05';
+    var_dump($a == $b);
+    var_dump((int)'012345');
+    var_dump((float)123.0 === (int)123.0);
+    var_dump((int)0 === (int)'hello, world');
+
+    $a =10;
+    $b = 20;
+    list($a, $b) = [$b, $a];
+    echo $a.' '.$b;
+    ?>
+
     <!--background-->
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
