@@ -46,22 +46,34 @@ switch ($a){
         echo 'default';
 }
 
-$result = match ($a) {
-    1 => 1,
-    2 => 2,
-    3 => 3,
-    4 => 4,
-    5 => 5,
-    6 => 6,
-    7 => 7,
-    8 => 8,
-    9 => 9,
-    10 => 10,
-    11 => 11,
-    12 => 12,
-    13 => 13,
-    14 => 14,
-    15 => 15,
-    default => 0.0
-};
-echo $result;
+
+function sequence($a)
+{
+    if ($a > 15 or $a < 0) {
+    return 'default';
+    }
+    else if ($a == 15) {
+        return 15 . '.';
+    } else {
+        $result = match ($a) {
+            1 => 1,
+            2 => 2,
+            3 => 3,
+            4 => 4,
+            5 => 5,
+            6 => 6,
+            7 => 7,
+            8 => 8,
+            9 => 9,
+            10 => 10,
+            11 => 11,
+            12 => 12,
+            13 => 13,
+            14 => 14,
+            15 => 15,
+            default => 0.0
+        };
+        return $result . ', ' . sequence($a+1);
+    }
+}
+    echo (sequence($a));
