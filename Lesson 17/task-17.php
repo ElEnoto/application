@@ -9,6 +9,7 @@ define("MAX_FILE_SIZE", 5000000);
     </form>
 
 <?php
+//if(function_exists('imagescale')) echo 'Библиотека подключена'; else echo 'no';
 
 if (!empty($_FILES['photo'])) {
     $messages_files = [];
@@ -32,12 +33,43 @@ if (!empty($_FILES['photo'])) {
     $name = basename($_FILES["photo"]['name']);
     $ext = pathinfo($name, PATHINFO_EXTENSION);
 
-    if (!in_array($ext, ['png', 'jpg', 'gif'])) {
-        echo "Файл должен иметь одно из известных расширений графических изображений (gif, jpg или png)!";
+    if (!in_array($ext, ['png', 'jpeg', 'gif'])) {
+        echo "Файл должен иметь одно из известных расширений графических изображений (gif, jpeg или png)!";
         return;
     }
     copy($_FILES["photo"]['tmp_name'], "copies/$name");
     move_uploaded_file($_FILES["photo"]['tmp_name'], "files/$name");
+
+
+//    if (!move_uploaded_file($_FILES["photo"]['tmp_name'], "files/$name")) {
+//        echo "Не удалось скопировать загруженный файл!";}
+//
+//    $imageDir = "files/";
+//    $imageSmallDir = "copies/";
+//    $fileOriginal = $imageDir . $name;
+//    $fileSmall = $imageSmallDir . $name;
+//    if (!is_dir($imageSmallDir)) {
+//        mkdir($imageSmallDir);
+//    }
+//    if (!move_uploaded_file($_FILES["photo"]['tmp_name'], $fileOriginal)) {
+//        echo "Не удалось скопировать загруженный файл!";
+//    } else {
+//        if ($_FILES["photo"]['type'] == "image/jpeg") {
+//            $image = imagecreatefromjpeg($fileOriginal);
+//        } elseif ($_FILES["photo"]['type'] == "image/png") {
+//            $image = imagecreatefrompng($fileOriginal);
+//        }
+//        if (!empty($image)) {
+//            $imageSmall = imagescale($image, 200);
+//            if ($_FILES["photo"]['type'] == "image/jpeg") {
+//                imagejpeg($imageSmall, $fileSmall);
+//            } elseif ($_FILES["photo"]['type'] == "image/png") {
+//                imagepng($imageSmall, $fileSmall);
+//            }
+//        }
+//    }
+
+
     $data_copies['photo'] = "copies/$name";
     $data_files['photo'] = "files/$name";
 
@@ -61,7 +93,7 @@ if (!empty($_FILES['photo'])) {
 
         if (!empty($array_files) and !empty($array_copies)) {
             for ($i = 0, $j = 0; $i <= (count($array_copies) - 1), $j <= (count($array_files) - 1); $i++, $j++)
-                echo "<a href=" . $array_files[$i] . "><img src=" . $array_copies[$j] . " style='width:280px; height: 200px; padding: 10px'></a>";
+                echo "<a href= $array_files[$i] target='_blank'><img src= $array_copies[$j]  style='width:280px; height: 200px; padding: 10px'></a>";
         }
     }
 
@@ -81,7 +113,7 @@ if (!empty($_FILES['photo'])) {
 
         if (!empty($array_files) and !empty($array_copies)) {
             for ($i = 0, $j = 0; $i <= (count($array_copies) - 1), $j <= (count($array_files) - 1); $i++, $j++)
-                echo "<a href=" . $array_files[$i] . "><img src=" . $array_copies[$j] . " style='width:280px; height: 200px; padding: 10px'></a>";
+                echo "<a href=  $array_files[$i]  target='_blank'><img src= $array_copies[$j]  style='width:280px; height: 200px; padding: 10px'></a>";
         }
     }
 }
