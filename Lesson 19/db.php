@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
+
+
 function db_connect() {
-    return new PDO('pgsql:host=localhost;dbname=authenticate','postgres','otus',[
+    return new PDO('pgsql:host=localhost;dbname=otus','postgres','otus',[
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
@@ -30,4 +32,28 @@ function authenticate_by_token($token) {
     if($result->rowCount() == 0)
         return false;
     return $result->fetchAll()[0];
+}
+
+function get_copies() {
+    $pdo = db_connect();
+    $result = $pdo->prepare('select copies from photo order by "date"');
+    $result->execute();
+    $data = $result->fetchAll();
+    return $data;
+}
+
+function get_files() {
+    $pdo = db_connect();
+    $result = $pdo->prepare('select files from photo order by "date"');
+    $result->execute();
+    $data = $result->fetchAll();
+    return $data;
+}
+
+
+function add_photo($user_id, $files, $copies)
+{
+    $pdo = db_connect();
+    $result = $pdo->prepare('insert into photo(user_id, files, copies, date) values (?,?,?,?)');
+    $result->execute([$user_id, $files, $copies, date('Y-m-d')]);
 }
