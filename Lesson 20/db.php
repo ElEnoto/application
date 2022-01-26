@@ -126,32 +126,32 @@ insert into picture (id_book, picture_file, picture_copy) values ((select id_boo
 
 }
 
-function deleteAll (){
-    $pdo = db_connect();
-    $result = $pdo->query('delete from bookshelves_bookcases');
-    $result->execute();
-}
+//function deleteAll (){
+//    $pdo = db_connect();
+//    $result = $pdo->query('delete from bookshelves_bookcases');
+//    $result->execute();
+//}
 
 function deletePicture ($contentId)
 {
     $pdo = db_connect();
-    $result = $pdo->query('delete from picture where id_book = ?');
-    $result->execute($contentId);
+    $result = $pdo->prepare('delete from picture where id_book = ?');
+    $result->execute([$contentId]);
 }
 
 function deleteAuthors ($contentId)
 {
     $pdo = db_connect();
-    $result = $pdo->query('delete from authors where id_author = (select id_author from authors_books where id_book = ?)');
-    $result->execute($contentId);
+    $result = $pdo->prepare('delete from authors where id_author = (select id_author from authors_books where id_book = ?)');
+    $result->execute([$contentId]);
 }
 
 
 function deleteBooks ($contentId)
 {
     $pdo = db_connect();
-    $result = $pdo->query('delete from books where id_book = ?');
-    $result->execute($contentId);
+    $result = $pdo->prepare('delete from books where id_book = ?');
+    $result->execute([$contentId]);
 }
 
 

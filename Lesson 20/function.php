@@ -6,7 +6,8 @@ require_once 'index.php';
 define("MAX_FILE_SIZE", 5000000);
 
 $err = '';?>
-    <link rel="stylesheet" href="style.css">
+
+
 <?php
 
 
@@ -33,8 +34,8 @@ function showAllBooksForUsers()
                     <th scope="col"><?= $item['id_book'] ?></th>
                     <td><?php
                         $a = 'picture_file';
-                        $b = 'picture_copy';
-                        echo "<a href=  $item[$a]  target='_blank'><img src= $item[$b]  style='padding: 5px'></a>"; ?></td>
+                        $b = 'picture_copy';?>
+                        <a data-fancybox href='<?=$item[$a]?>'><img src= <?=$item[$b]?>  style='padding: 5px'></a></td>
                     <td><?= $item['name_book'] ?></td>
                     <td><?= $item['first_name'] . ' ' . $item['last_name'] ?></td>
                     <td><?= $item['page_number'] ?></td>
@@ -65,8 +66,8 @@ function showAllBooksForUsers()
                 <tr>
                     <th scope="col"><?= $item['id_book'] ?></th>
                     <td><?php $a = 'picture_file';
-                        $b = 'picture_copy';
-                        echo "<a href=  $item[$a]  target='_blank'><img src= $item[$b]  style='padding: 5px'></a>"; ?></td>
+                        $b = 'picture_copy';?>
+                        <a data-fancybox href='<?=$item[$a]?>'><img src= <?=$item[$b]?>  style='padding: 5px'></a></td>
                     <td><?= $item['name_book'] ?></td>
                     <td><?= $item['first_name'] . ' ' . $item['last_name'] ?></td>
                     <td><?= $item['page_number'] ?></td>
@@ -105,19 +106,16 @@ function showAllBooksForAdmin()
         </tr>
         </thead>
         <?php
-        foreach ($content as $item) { ?>
+        foreach ($content as $item) {?>
+
             <tbody>
             <tr>
                     <th scope="col"><?= $item['id_book'] ?></th>
                     <td><?php
                         $a = 'picture_file';
-                        $b = 'picture_copy';
-                        echo "<img id='myImg' src= $item[$b]  style='padding: 5px'>"; ?>
-                        <div id="myModal" class="modal">
-                            <span class="close">&times;</span>
-                            <img src= <?=$item[$b] ?> class="modal-content" id="img01">
-                            <div id="caption"></div>
-                        </div>
+                        $b = 'picture_copy';?>
+                        <a data-fancybox href='<?=$item[$a]?>'><img src= <?=$item[$b]?>  style='padding: 5px'></a>
+
                     </td>
 
                     <td><?= $item['name_book'] ?></td>
@@ -125,7 +123,7 @@ function showAllBooksForAdmin()
                     <td><?= $item['page_number'] ?></td>
                     <td><?= $item['year_of_publishing'] ?></td>
                     <td>
-                        <input type="checkbox" class="form-check-input" name="id[]" value="<?= $item['id_book'] ?>">
+                        <input type="checkbox" class="form-check-input" name="id_book[]" value="<?= $item['id_book'] ?>">
                     </td>
             </tr>
 
@@ -147,6 +145,7 @@ function showAllBooksForAdmin()
             <th scope="col">Автор</th>
             <th scope="col">Количество страниц</th>
             <th scope="col">Год издания</th>
+            <th scope="col">Удалить данные</th>
         </tr>
         </thead>
         <?php foreach ($content as $item) { ?>
@@ -154,14 +153,14 @@ function showAllBooksForAdmin()
             <tr>
                 <th scope="col"><?= $item['id_book'] ?></th>
                 <td><?php $a = 'picture_file';
-                    $b = 'picture_copy';
-                    echo "<a href=  $item[$a]  target='_blank'><img src= $item[$b]  style='padding: 5px'></a>"; ?></td>
+                    $b = 'picture_copy';?>
+                    <a data-fancybox href='<?=$item[$a]?>'><img src= <?=$item[$b]?>  style='padding: 5px'></a></td>
                 <td><?= $item['name_book'] ?></td>
                 <td><?= $item['first_name'] . ' ' . $item['last_name'] ?></td>
                 <td><?= $item['page_number'] ?></td>
                 <td><?= $item['year_of_publishing'] ?></td>
                 <td>
-                    <input type="checkbox" class="form-check-input" name="id[]" value="<?= $item['id_book'] ?>">
+                    <input type="checkbox" class="form-check-input" name="id_book[]" value="<?= $item['id_book'] ?>">
                 </td>
             </tr>
         <?php }
@@ -176,15 +175,16 @@ function showAllBooksForAdmin()
 <input type="submit" class="btn btn-primary" name="delete" value="Удалить">
 </form>
     <?php
-    if (!empty ($_POST['id'])) {
-        var_dump($_POST['id']);
-        foreach ($_POST['id'] as $contentId) {
-
+    if (!empty ($_POST['id_book'])) {
+        var_dump($_POST);
+        echo '<br>';
+        foreach ($_POST['id_book'] as $contentId) {
+            echo $contentId;
             deletePicture($contentId);
             deleteAuthors($contentId);
             deleteBooks ($contentId);
         }
-//            return $a;
+
         return showAllBooksForAdmin();
 
     }
