@@ -1,10 +1,20 @@
 <?php
 class Product
 {
-    public $mfr, $barcode, $type, $class, $name, $price, $color, $weight, $height, $width, $thickness;
-    public function __construct($mfr, $barcode, $type, $class, $name, $price, $color, $weight, $height, $width, $thickness)
+    public string $country;
+    public int $barcode;
+    public string $type;
+    public string $class;
+    public string $name;
+    public int $price;
+    public string $color;
+    public int $weight;
+    public int $height;
+    public int $width;
+    public int $thickness;
+    public function __construct($country, $barcode, $type, $class, $name, $price, $color, $weight, $height, $width, $thickness)
     {
-        $this->mfr = $mfr;
+        $this->country = $country;
         $this->barcode = $barcode;
         $this->type = $type;
         $this->class = $class;
@@ -19,7 +29,7 @@ class Product
 
     public function info()
     {
-        echo "Страна изготовитель: $this->mfr;" ."<br>";
+        echo "Страна изготовитель: $this->country;" ."<br>";
         echo "Штрих-код: $this->barcode;" ."<br>";
         echo "Тип товара: $this->type;" ."<br>";
         echo "Класс товара: $this->class;" ."<br>";
@@ -37,8 +47,8 @@ class WashingMachine extends Product
 // Мы знаем, что все стиральные машины - это бытовая техника, поэтому type и class указывать не нужно,
 // онb одинаковый
 {
-    public function __construct($mfr, $barcode, $name, $price, $color, $weight, $height, $width, $thickness){
-        $this->mfr = $mfr;
+    public function __construct($country, $barcode, $name, $price, $color, $weight, $height, $width, $thickness){
+        $this->country = $country;
         $this->barcode = $barcode;
         $this->name = $name;
         $this->price = $price;
@@ -50,7 +60,7 @@ class WashingMachine extends Product
     }
     public function info()
     {
-        echo "Страна изготовитель: $this->mfr;" ."<br>";
+        echo "Страна изготовитель: $this->country;" ."<br>";
         echo "Штрих-код: $this->barcode;" ."<br>";
         echo "Тип товара: Бытовая техника;" ."<br>";
         echo "Класс товара: Стиральная машина;" ."<br>";
