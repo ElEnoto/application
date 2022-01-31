@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 require_once "Abstract.php";
-class PieceProduct extends AbstractProduct
+class Product extends AbstractProduct
 {
     public int $count;
     public function __construct ($barcode, $name, $price, $count){
@@ -14,7 +14,6 @@ class PieceProduct extends AbstractProduct
     {
         $cost = $this->price * $this->count;
         echo "Доход с продажи $this->name, $this->barcode составил $cost рублей";
-        return $cost;
     }
     public function total()
     {

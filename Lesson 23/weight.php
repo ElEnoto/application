@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 require_once "Abstract.php";
-class DigitalProduct extends AbstractProduct
+class WeightProduct extends AbstractProduct
 {
     public int $weight;
     public function __construct($barcode, $name, $price, $weight)
@@ -17,7 +17,6 @@ class DigitalProduct extends AbstractProduct
     {
         $cost = $this->price * $this->weight;
         echo "Доход с продажи $this->name, $this->barcode составил $cost рублей";
-        return $cost;
     }
     public function total()
     {
