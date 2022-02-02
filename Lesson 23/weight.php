@@ -5,11 +5,9 @@ require_once "Abstract.php";
 class WeightProduct extends AbstractProduct
 {
     public int $weight;
-    public function __construct($barcode, $name, $price, $weight)
+    public function __construct(int $barcode, string $name, int $price, int $weight)
     {
-        $this->barcode = $barcode;
-        $this->name = $name;
-        $this->price = $price;
+        parent::__construct($barcode, $name, $price);
         $this->weight = $weight;
     }
 
@@ -21,7 +19,17 @@ class WeightProduct extends AbstractProduct
     public function total()
     {
         $cost = $this->price * $this->weight;
-        static $total = 0;
-        echo $total += $cost;
+        echo "Прибыль итого:" . self::$total += $cost;
     }
 }
+
+$a1 = new WeightProduct(151666, 'test1', 12, 6);
+$a1->cost();
+echo '<br>';
+$a1->total();
+echo '<br>';
+
+$a2 = new WeightProduct(151666, 'test2', 10, 3);
+$a2->cost();
+echo '<br>';
+$a2->total();

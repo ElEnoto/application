@@ -4,10 +4,8 @@ require_once "Abstract.php";
 class Product extends AbstractProduct
 {
     public int $count;
-    public function __construct ($barcode, $name, $price, $count){
-        $this->barcode = $barcode;
-        $this->name = $name;
-        $this->price = $price;
+    public function __construct (int $barcode, string $name, int $price, int $count){
+        parent::__construct($barcode, $name, $price);
         $this->count = $count;
     }
     public function cost()
@@ -18,7 +16,17 @@ class Product extends AbstractProduct
     public function total()
     {
         $cost = $this->price * $this->count;
-        static $total = 0;
-        echo $total += $cost;
+        echo "Прибыль итого:" . self::$total += $cost;
     }
 }
+
+$a1 = new Product(151666, 'test1', 12, 6);
+$a1->cost();
+echo '<br>';
+$a1->total();
+echo '<br>';
+
+$a2 = new Product(151666, 'test2', 10, 3);
+$a2->cost();
+echo '<br>';
+$a2->total();
