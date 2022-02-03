@@ -4,29 +4,34 @@ require_once "Abstract.php";
 class DigitalProduct extends AbstractProduct
 {
     public int $count;
-    public function __construct (int $barcode, string $name, int $price, int $count){
+    public function __construct (int $barcode, string $name, float $price, int $count){
         parent::__construct($barcode, $name, $price);
         $this->count = $count;
     }
-    public function cost()
+    public function cost(): float
     {
         $cost = $this->price * $this->count / 2;
-        echo "Доход с продажи $this->name, $this->barcode составил $cost рублей";
+        return $cost;
     }
 
-    public function total()
+    public function total(): float
     {
         $cost = $this->price * $this->count / 2;
-        echo "Прибыль итого:" . self::$total += $cost;
+        return self::$total += $cost;
     }
 }
 $a1 = new DigitalProduct(151666, 'test1', 12, 6);
-$a1->cost();
+$cost1 = $a1->cost();
+echo "Доход с продажи $a1->name, $a1->barcode составил $cost1 рублей";
 echo '<br>';
-$a1->total();
+$total1 = $a1->total();
+echo "Прибыль итого: $total1";
 echo '<br>';
 
-$a2 = new DigitalProduct(151666, 'test2', 10, 3);
-$a2->cost();
+$a2 = new DigitalProduct(151666, 'test2', 9, 3);
+$cost2 = $a2->cost();
+echo "Доход с продажи $a2->name, $a2->barcode составил $cost2 рублей";
 echo '<br>';
-$a2->total();
+$total2 = $a2->total();
+echo "Прибыль итого: $total2";
+echo '<br>';
