@@ -3,9 +3,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Otus\\Mvc\\Controllers\\": "Controllers/",
-            "Otus\\Mvc\\src\\": "src/",
-            "Otus\\Mvc\\Views\\": "Views/"
+            "Otus\\": "src/"
         }
     },
     "require": {

@@ -1,11 +1,21 @@
 <?php
-namespace Otus\Mvc\src;
+namespace Otus;
 
 class View
 {
-    static function render(string $view, array $data = []) {
-        extract($data, EXTR_OVERWRITE);
-        require_once implode(DIRECTORY_SEPARATOR, [$_SERVER['DOCUMENT_ROOT'], 'Views', "$view.php"]);
+    public static $name;
+    public static $title;
+    static function open() {
+        require_once '../Public/Views/tamplate.php';
         exit();
     }
 }
+//    static function render(string $view, array $data = []) {
+//        extract($data, EXTR_OVERWRITE);
+//        require_once implode(DIRECTORY_SEPARATOR, [$_SERVER['DOCUMENT_ROOT'], 'Public/Views', "$view.php"]);
+//        exit();
+//    }
+//public function __construct ($view){
+//    $this->view = $view;
+//}
+
