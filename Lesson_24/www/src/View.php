@@ -6,7 +6,7 @@ class View
     public static $name;
     public static $title;
     static function open() {
-        require_once '../Public/Views/tamplate.php';
+        require_once 'Views/tamplate.php';
         exit();
     }
 }
