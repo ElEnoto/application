@@ -23,7 +23,7 @@ class App {
         } else {
             if($path !== "")
             {
-                @list($controller, $action) = explode("/", $path, 2);
+                list($controller, $action) = explode("/", $path, 2);
                 if (isset($controller)){
                     $controller_name = "Otus\\Controllers\\{$controller}Controller";
                 }
