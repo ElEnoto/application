@@ -9,21 +9,7 @@ use PDO;
 
 class Database
 {
-//    public static function db_connect()
-//    {
-//        return new PDO('pgsql:host=db; dbname=otus','postgres','otus',[
-//            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-//            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-//        ]);
-//    }
-//    public static function seeAll()
-//    {
-//        $pdo = db_connect();
-//        $result = $pdo->prepare('select * from users');
-//        $result->execute();
-//
-//        return $result->fetchAll();
-//    }
+
     public static function config()
     {
         if(PHP_SAPI == "cli")

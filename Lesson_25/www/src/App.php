@@ -13,9 +13,7 @@ class App {
     {
         Database::bootEloquent();
 
-//        Database::db_connect();
-//        Database::seeAll();
-        $controller_name = 'Otus\\Controllers\\NameController';
+        $controller_name = 'Otus\\Controllers\\IndexController';
         $action_name = "action";
 
         $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");

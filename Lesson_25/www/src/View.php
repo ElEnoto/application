@@ -9,6 +9,10 @@ class View
         require_once 'Views/tamplate.php';
         exit();
     }
+    static function authenticate() {
+        require_once 'Views/authenticate.php';
+        exit();
+    }
 }
 //    static function render(string $view, array $data = []) {
 //        extract($data, EXTR_OVERWRITE);

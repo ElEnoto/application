@@ -5,9 +5,9 @@ use Otus\View;
 
 class HelloController {
     public function world() {
-//        View::render('Hi');
+
         View::$name = 'Hello, world';
-        View::$title = 'Hi';
+        View::$title = "Добро пожаловать {$_SESSION['name']}";
         View::open();
     }
 }
