@@ -5,7 +5,8 @@ class View
 {
     public static $name;
     public static $title;
-    static function open() {
+    public static $content;
+    static function tamplate() {
         require_once 'Views/tamplate.php';
         exit();
     }
@@ -13,11 +14,15 @@ class View
         require_once 'Views/authenticate.php';
         exit();
     }
+    static function show_tasks() {
+        require_once 'Views/show_tasks.php';
+        exit();
+    }
+    static function show_tasks_admin() {
+        require_once 'Views/show_tasks_admin.php';
+        exit();
+    }
 }
-//    static function render(string $view, array $data = []) {
-//        extract($data, EXTR_OVERWRITE);
-//        require_once implode(DIRECTORY_SEPARATOR, [$_SERVER['DOCUMENT_ROOT'], 'Public/Views', "$view.php"]);
-//        exit();
-//    }
+
 
 

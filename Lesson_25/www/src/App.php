@@ -3,6 +3,7 @@
 namespace Otus;
 
 
+
 class App {
     protected static $routes = [
         'Hello/Hello-world' => ['Hello','world'],
@@ -11,7 +12,6 @@ class App {
 
     public static function run()
     {
-        Database::bootEloquent();
 
         $controller_name = 'Otus\\Controllers\\IndexController';
         $action_name = "action";
@@ -38,20 +38,16 @@ class App {
 
         // Check controller exists.
         if(!class_exists($controller_name,true)) {
-            //redirect to 404
-//            View::render('404');
             View::$name = 'Something wrong';
             View::$title = '404 - Not Foud';
-            View::open();
+            View::tamplate();
 
         }
 
         if(!method_exists($controller_name, $action_name)) {
-            //redirect to 404
-//            View::render('404');
             View::$name = 'Something wrong';
             View::$title = '404 - Not Foud';
-            View::open();
+            View::tamplate();
 
         }
 

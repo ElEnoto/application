@@ -1,44 +1,40 @@
 <?php
 namespace Otus\Controllers;
-use Otus\Database;
+use Otus\Models\Authenticate\Authenticate;
+use Otus\Models\Task_tracker\Get;
 use Otus\View;
-use Otus\Models\Eloquent\User as EloquentUser;
+
 
 class IndexController {
     public function action() {
-//$a = 1;
-//       $users = EloquentUser::all();
-//////        var_dump($users);
-//        foreach ($users as $u){
-//            echo $u -> username . '<br>';
-//        }
-//        View::$name = 'Hello, User';
-//        View::$title = 'User';
-//        View::open();
+        session_start();
+
 
         if (!empty($_GET['action']) && $_GET['action'] == 'auth' && empty($_SESSION['user_id'])) {
+
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $result = EloquentUser::all()-> where('username', '=', "$username")-> where('password', '=', "$password") ;
-            foreach ($result as $u){
-                $a=$u->id;
-                if (!$a) {
-                    echo '<h2>Невреное имя пользователя или пароль!</h2><br>';
-                } else {
-                    $_SESSION['user_id'] = $u->id;
-                    $_SESSION['name'] = $username;
-                    echo $_SESSION['name'];
-                }
-
+            $result = Authenticate::authenticate($username, $password);
+            if (!$result) {
+                echo '<h2>Невреное имя пользователя или пароль!</h2><br>';
+            } else {
+                $_SESSION['user_id'] = $result;
+                $_SESSION['name'] = $_POST['username'];
             }
         }
+
         if (empty($_SESSION['user_id'])) {
         View::authenticate();
         }
-        else {
-            View::$title = "Hello";
+        elseif ($_SESSION['name'] == "admin") {
+            $controller = new AdminController();
+            $controller ->add_task();
+        } else{
+            $content = Get::get_tasks();
+            View::$content = $content;
+            View::$title = "Tasks";
             View::$name = "Добро пожаловать, {$_SESSION['name']}";
-            View::open();
+            View::show_tasks();
         }
     }
 }

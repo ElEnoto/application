@@ -1,6 +1,3 @@
-<?php
-//require_once '../Controllers/IndexController.php'
-//?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +8,7 @@
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap-reboot.css">
-    <title>Document</title>
+    <title>Добро пожаловать</title>
 </head>
 <body>
 
