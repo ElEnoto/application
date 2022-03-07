@@ -10,7 +10,8 @@ class AdminController {
         if (empty($_POST['id']) and empty($_POST['task']) and empty($_POST['firstname']) and empty($_POST['lastname'])and empty($_POST['date'])) {
                 return self::show_task();
         }
-        if (!empty($_POST['id']) and preg_match('/^\+?\d+$/', $_POST['id']) and !empty($_POST['task']) and !empty($_POST['firstname']) and !empty($_POST['lastname'])) {
+        if (!empty($_POST['id']) and !empty($_POST['task']) and !empty($_POST['firstname']) and !empty($_POST['lastname'])) {
+            if (preg_match('/^\+?\d+$/', $_POST['id'])) {
             $add_content = [];
             $add_content['ID'] = $_POST['id'];
             $add_content['task'] = $_POST['task'];
@@ -18,9 +19,10 @@ class AdminController {
             $add_content['first_name'] = $_POST['firstname'];
             Add::add_tasks($add_content);
             return self::show_task();
-        } elseif (!empty($_POST['id']) and !preg_match('/^\+?\d+$/', $_POST['id']) and !empty($_POST['task']) and !empty($_POST['firstname']) and !empty($_POST['lastname'])) {
-            echo '<h2>Поле "Номер" должно быть числом</h2> . <br>';
-            return self::show_task();
+            } else {
+                echo '<h2>Поле "Номер" должно быть числом</h2> . <br>';
+                return self::show_task();
+            }
         }
         else {
             echo "<h2>Необходимо заполнить все поля</h2> . <br>";
