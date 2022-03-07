@@ -2,8 +2,6 @@
 namespace Otus\Controllers;
 
 Class RouteController{
-    private $controller_name = 'Otus\\Controllers\\IndexController';
-
     protected static $routes = [
         'Hello/Hello-world' => ['Hello','world'],
         'Hi' => ['Hello','world']
@@ -11,7 +9,6 @@ Class RouteController{
 
     public static function route()
     {
-
         $controller_name = 'Otus\\Controllers\\IndexController';
         $action_name = "action";
 
