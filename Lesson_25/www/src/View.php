@@ -6,8 +6,8 @@ class View
     public static $name;
     public static $title;
     public static $content;
-    static function tamplate() {
-        require_once 'Views/tamplate.php';
+    static function template() {
+        require_once 'Views/template.php';
         exit();
     }
     static function authenticate() {

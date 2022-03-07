@@ -4,55 +4,25 @@ namespace Otus;
 
 
 
+use Otus\Controllers\RouteController;
+
 class App {
-    protected static $routes = [
-        'Hello/Hello-world' => ['Hello','world'],
-        'Hi' => ['Hello','world']
-    ];
 
     public static function run()
     {
+        $controller = new RouteController();
+        $route = $controller->route();
+        $controller_name = $route[0];
+        $action_name = $route[1];
 
-        $controller_name = 'Otus\\Controllers\\IndexController';
-        $action_name = "action";
-
-        $path = trim(parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH), "/");
-        if(array_key_exists($path,self::$routes))
-        {
-            $controller = self::$routes[$path][0];
-            $controller_name = "Otus\\Controllers\\{$controller}Controller";
-            $action_name = self::$routes[$path][1];
+        if(!class_exists($controller_name,true) or !method_exists($controller_name, $action_name)) {
+            View::$name = 'Something wrong';
+            View::$title = '404 - Not Foud';
+            return View::template();
         } else {
-            if($path !== "")
-            {
-                list($controller, $action) = explode("/", $path, 2);
-                if (isset($controller)){
-                    $controller_name = "Otus\\Controllers\\{$controller}Controller";
-                }
-                if (isset($action)){
-                    $action_name = $action;
-                }
-            }
+            $controller = new $controller_name();
+            $controller->$action_name();
         }
-
-
-        // Check controller exists.
-        if(!class_exists($controller_name,true)) {
-            View::$name = 'Something wrong';
-            View::$title = '404 - Not Foud';
-            View::tamplate();
-
-        }
-
-        if(!method_exists($controller_name, $action_name)) {
-            View::$name = 'Something wrong';
-            View::$title = '404 - Not Foud';
-            View::tamplate();
-
-        }
-
-        $controller = new $controller_name();
-        $controller->$action_name();
 
     }
 

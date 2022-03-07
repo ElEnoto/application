@@ -6,8 +6,8 @@ use Otus\View;
 class HelloController {
     public function world() {
 
-        View::$name = 'Hello';
-        View::$title = "Hello, world";
-        View::tamplate();
+        View::$name = 'Hello, world';
+        View::$title = "Hello";
+        View::template();
     }
 }
