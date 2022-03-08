@@ -8,9 +8,9 @@ use Otus\View;
 class AdminController {
     public static function add_task()
     {
-        $b = Add::find_content();
-        if ($b and !Add::$error) {
-            Add::add_tasks($b);
+        $add = Add::find_content();
+        if ($add and !Add::$error) {
+            Add::add_tasks($add);
             return self::show_task();
         } elseif (Add::$error) {
             View::$error = Add::$error;
