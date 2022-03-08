@@ -15,6 +15,10 @@ use Otus\View;
 </head>
 <h2><?php echo View::$name ?></h2>
 <body>
+<?php if (View::$error){?>
+<h2><?php echo View::$error;?></h2><?php
+        }?>
+
 <div style="padding: 15px">
     <form action="/?action=download_task" method="post" enctype="multipart/form-data">
         <input type="text" name="id" placeholder="Номер" /><br>

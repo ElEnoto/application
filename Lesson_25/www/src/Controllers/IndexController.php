@@ -8,21 +8,18 @@ use Otus\View;
 class IndexController {
     public function action() {
         session_start();
-
-
         if (!empty($_GET['action']) && $_GET['action'] == 'auth' && empty($_SESSION['user_id'])) {
-
             $username = $_POST['username'];
             $password = $_POST['password'];
             $result = Authenticate::authenticate($username, $password);
             if (!$result) {
-                echo '<h2>Невреное имя пользователя или пароль!</h2><br>';
+                View::$error = "Невреное имя пользователя или пароль!";
+                View::authenticate();
             } else {
                 $_SESSION['user_id'] = $result;
                 $_SESSION['name'] = $_POST['username'];
             }
         }
-
         if (empty($_SESSION['user_id'])) {
         View::authenticate();
         }
