@@ -1,17 +1,20 @@
 <?php
 namespace Otus\Models\Connect;
 
-use Illuminate\Database\Eloquent\Model;
-
 use PDO;
 
-class DbConnect extends Model
+class DbConnect
 {
-    public static function db_connect():object
+    public static function db_connect()
     {
-        return new PDO('pgsql:host=db;dbname=otus','postgres','otus',[
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]);
+        try {
+            return new PDO('pgsql:host=db;dbname=otus','postgres','otus',[
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
+        } catch (\Throwable $exception){
+            echo 'Something was wrong. We will fix it soon';
+        }
+
     }
 }

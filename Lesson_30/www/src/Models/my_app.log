@@ -1,0 +1,2 @@
+[2022-03-09T20:38:40.713064+00:00] name.NOTICE: Task was added {"id":"12"} []
+[2022-03-09T20:41:05.699951+00:00] name.ERROR: Task wasn't added because of fields are empty [] []
