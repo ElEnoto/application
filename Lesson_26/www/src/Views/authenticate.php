@@ -1,3 +1,6 @@
+<?php
+use Otus\View;
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +14,9 @@
     <title>Добро пожаловать</title>
 </head>
 <body>
+<?php if (View::$error){?>
+    <h2><?php echo View::$error;?></h2><?php
+}?>
 
 <div style="padding: 15px">
     <h2>Войдите в систему!</h2><br>

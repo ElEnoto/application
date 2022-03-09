@@ -1,15 +1,10 @@
 <?php
 namespace Otus\Models\Task_tracker;
 
-use Illuminate\Database\Eloquent\Model;
-
 use Otus\Models\Connect\DbConnect;
 
-
-class Add extends Model
+class Add
 {
-    public $timestamps = false;
-
     public static function add_tasks(array $add_content):void
     {
             $pdo = DbConnect::db_connect();
@@ -20,5 +15,4 @@ class Add extends Model
             $result = $pdo->prepare('insert into tasks(id, task, last_name, first_name, date) values (?,?,?,?,?)');
             $result->execute([$id, $task, $last_name, $first_name, date('Y-m-d')]);
     }
-
 }

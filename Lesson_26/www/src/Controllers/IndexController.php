@@ -9,11 +9,10 @@ class IndexController {
     {
         session_start();
         if (!empty($_GET['action']) && $_GET['action'] == 'auth' && empty($_SESSION['user_id'])) {
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $result = Authenticate::authenticate($username, $password);
+            $result = Authenticate::authenticate($_POST['username'], $_POST['password']);
             if (!$result) {
-                echo '<h2>Невреное имя пользователя или пароль!</h2><br>';
+                View::$error = "Невреное имя пользователя или пароль!";
+                View::authenticate();
             } else {
                 $_SESSION['user_id'] = $result;
                 $_SESSION['name'] = $_POST['username'];

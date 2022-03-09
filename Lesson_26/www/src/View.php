@@ -6,6 +6,7 @@ class View
     public static $name;
     public static $title;
     public static $content;
+    public static $error = null;
     static function template():void
     {
         require_once 'Views/template.php';
