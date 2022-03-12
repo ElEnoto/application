@@ -7,8 +7,5 @@ class HelloController {
     {
         $view = new View('Hello, world', "Hello", "");
         $view->template();
-//        View::$name = 'Hello, world';
-//        View::$title = "Hello";
-//        View::template();
     }
 }

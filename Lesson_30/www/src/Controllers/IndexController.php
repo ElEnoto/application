@@ -28,10 +28,6 @@ class IndexController {
             $content = Get::get_tasks();
             $view = new View("Добро пожаловать, {$_SESSION['name']}","Tasks", $content);
             $view->show_tasks_admin();
-//            View::$content = $content;
-//            View::$title = "Tasks";
-//            View::$name = "Добро пожаловать, {$_SESSION['name']}";
-//            View::show_tasks();
         }
     }
 }
