@@ -15,6 +15,5 @@ class DbConnect
         } catch (\Throwable $exception){
             echo 'Something was wrong. We will fix it soon';
         }
-
     }
 }

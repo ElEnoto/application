@@ -3,26 +3,31 @@ namespace Otus;
 
 class View
 {
-    public static $name;
-    public static $title;
-    public static $content;
+    public $name;
+    public $title;
+    public $content;
     public static $error = null;
-    static function template():void
+    public function __construct($name, $title, $content){
+        $this->name = $name;
+        $this->title = $title;
+        $this->content = $content;
+    }
+    public function template():void
     {
         require_once 'Views/template.php';
         exit();
     }
-    static function authenticate():void
+    public static function authenticate():void
     {
         require_once 'Views/authenticate.php';
         exit();
     }
-    static function show_tasks():void
+    public function show_tasks():void
     {
         require_once 'Views/show_tasks.php';
         exit();
     }
-    static function show_tasks_admin():void
+    public function show_tasks_admin():void
     {
         require_once 'Views/show_tasks_admin.php';
         exit();

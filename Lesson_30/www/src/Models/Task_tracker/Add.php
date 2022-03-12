@@ -23,6 +23,5 @@ class Add
         } catch (\Throwable $exception){
             echo 'Something was wrong. We will fix it soon';
         }
-
     }
 }

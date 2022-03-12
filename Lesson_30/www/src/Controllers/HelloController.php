@@ -5,8 +5,10 @@ use Otus\View;
 class HelloController {
     public function world():void
     {
-        View::$name = 'Hello, world';
-        View::$title = "Hello";
-        View::template();
+        $view = new View('Hello, world', "Hello", "");
+        $view->template();
+//        View::$name = 'Hello, world';
+//        View::$title = "Hello";
+//        View::template();
     }
 }

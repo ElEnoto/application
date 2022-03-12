@@ -8,9 +8,11 @@ class AdminShowController {
     public static function show_task():void
     {
         $content = Get::get_tasks();
-        View::$content = $content;
-        View::$title = "Tasks";
-        View::$name = "Добро пожаловать, {$_SESSION['name']}";
-        View::show_tasks_admin();
+        $view = new View("Добро пожаловать, {$_SESSION['name']}","Tasks", $content);
+        $view->show_tasks_admin();
+//        View::$content = $content;
+//        View::$title = "Tasks";
+//        View::$name = "Добро пожаловать, {$_SESSION['name']}";
+//        View::show_tasks_admin();
     }
 }

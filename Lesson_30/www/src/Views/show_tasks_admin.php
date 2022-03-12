@@ -11,9 +11,9 @@ use Otus\View;
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap-grid.css">
     <link rel="stylesheet" href="../../Public/bootstrap/css/bootstrap-reboot.css">
-    <title><?php echo View::$title?></title>
+    <title><?php echo $this->title?></title>
 </head>
-<h2><?php echo View::$name ?></h2>
+<h2><?php echo $this->name ?></h2>
 <body>
 <?php if (View::$error){?>
     <h2><?php echo View::$error;?></h2><?php
@@ -37,7 +37,7 @@ use Otus\View;
     </tr>
     </thead>
     <?php
-    foreach (View::$content as $item) { ?>
+    foreach ($this->content as $item) { ?>
     <tbody>
     <tr>
         <th scope="col"><?= $item['id'] ?></th>
