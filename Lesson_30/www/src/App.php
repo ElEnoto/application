@@ -12,9 +12,6 @@ class App {
         if(!class_exists($controller_name,true) or !method_exists($controller_name, $action_name)) {
             $view = new View('Something wrong', '404 - Not Foud', "");
             $view->template();
-//            View::$name = 'Something wrong';
-//            View::$title = '404 - Not Foud';
-//            View::template();
         } else {
             $controller = new $controller_name();
             $controller->$action_name();

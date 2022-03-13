@@ -1,8 +1,7 @@
 <?php
 namespace Otus\Models\Authenticate;
 
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
+use Otus\Log;
 use Otus\Models\Connect\DbConnect;
 
 class Authenticate
@@ -16,9 +15,7 @@ class Authenticate
             $result->execute([$username, $password]);
             if($result->rowCount() == 0)
                 return false;
-            $log = new Logger('name');
-            $log->pushHandler(new StreamHandler(__DIR__.'/../my_app.log', Logger::NOTICE));
-            $log->notice('Authenticate user');
+            Log::notice('Authenticate user');
             return $result->fetchAll()[0]['id'];
         }
 }

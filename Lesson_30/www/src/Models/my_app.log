@@ -2,3 +2,8 @@
 [2022-03-09T20:41:05.699951+00:00] name.ERROR: Task wasn't added because of fields are empty [] []
 [2022-03-12T10:42:28.579381+00:00] name.NOTICE: Authenticate user [] []
 [2022-03-12T11:05:05.392888+00:00] name.NOTICE: Authenticate user [] []
+[2022-03-13T10:10:13.924400+00:00] name.NOTICE: Authenticate user [] []
+[2022-03-13T10:22:05.508594+00:00] name.ERROR: Task wasn't added because of fields "firstname" и "lastname" musn't include integer [] []
+[2022-03-13T10:22:21.105975+00:00] name.ERROR: Task wasn't added because of fields "firstname" и "lastname" musn't include integer [] []
+[2022-03-13T10:23:02.389191+00:00] name.ERROR: Task wasn't added because of fields "firstname" и "lastname" musn't include integer [] []
+[2022-03-13T10:33:54.576109+00:00] name.NOTICE: Task was added {"id":"5"} []

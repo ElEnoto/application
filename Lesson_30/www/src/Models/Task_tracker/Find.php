@@ -1,9 +1,7 @@
 <?php
 namespace Otus\Models\Task_tracker;
 
-
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
+use Otus\Log;
 
 class Find
 {
@@ -17,15 +15,11 @@ class Find
         if (!empty($_POST['id']) and !empty($_POST['task']) and !empty($_POST['firstname']) and !empty($_POST['lastname'])) {
             if (!preg_match('/^\+?\d+$/', $_POST['id'])) {
                 Find::$error = 'Поле "Номер" должно быть числом';
-                $log = new Logger('name');
-                $log->pushHandler(new StreamHandler(__DIR__.'/../my_app.log', Logger::ERROR));
-                $log->error('Task wasn\'t added because of fields "Номер" must be integer');
+                Log::error('Task wasn\'t added because of fields "Номер" must be integer');
                 return Find::$error;
-            } elseif (!preg_match('/^[a-zа-я_-]$/', $_POST['firstname']) or !preg_match('/^[a-zа-я_-]$/', $_POST['lastname'])){
+            } elseif (!preg_match('/^[a-zа-я_-]{2,20}$/', $_POST['firstname']) or !preg_match('/^[a-zа-я_-]{2,20}$/', $_POST['lastname'])){
                 Find::$error = 'Поле "firstname" и "lastname" должны состоять из букв';
-                $log = new Logger('name');
-                $log->pushHandler(new StreamHandler(__DIR__.'/../my_app.log', Logger::ERROR));
-                $log->error('Task wasn\'t added because of fields "firstname" и "lastname" musn\'t include integer');
+                Log::error('Task wasn\'t added because of fields "firstname" и "lastname" musn\'t include integer');
                 return Find::$error;
             } else {
                 $add_content['ID'] = $_POST['id'];
@@ -36,9 +30,7 @@ class Find
             }
         }
         else {
-            $log = new Logger('name');
-            $log->pushHandler(new StreamHandler(__DIR__.'/../my_app.log', Logger::ERROR));
-            $log->error('Task wasn\'t added because of fields are empty');
+            Log::error('Task wasn\'t added because of fields are empty');
             Find::$error = 'Необходимо заполнить все поля';
             return Find::$error;
         }
