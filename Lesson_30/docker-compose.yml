@@ -9,12 +9,15 @@ services:
       - ./nginx_conf/docker.conf:/etc/nginx/conf.d/docker.conf
     links:
       - php-fpm
+
   php-fpm:
-    image: php:8-fpm
+#    image: php:8-fpm
     build:
+      context: .
       dockerfile: Dockerfile
     volumes:
       - ./www:/var/www/app
+
   db:
     image: postgres
     restart: always
@@ -26,10 +29,3 @@ services:
     restart: always
     ports:
       - 5432:5432
-#    image: mysql
-#    command: --default-authentication-plugin=mysql_native_password
-#    ports:
-#      - "3386:3306"
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: root
